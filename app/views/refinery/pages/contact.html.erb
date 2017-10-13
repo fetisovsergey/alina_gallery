@@ -1,0 +1,51 @@
+<% provide(:title, 'Контакты') %>
+<!DOCTYPE html>
+<html>
+<style>footer{position:fixed !important;bottom:0</style>
+<body>
+	<div class="main_block additions contact">
+	<h3>
+		<% if @page.content_for(:email) %>
+			<% url = get_social_url(@page.content_for(:email)) %>
+			<a href="mailto:<%= url %>">
+				<%= image_tag("email.png",class:"big_icon") %><%= url %>
+			</a>
+			<br>
+		<% end %>
+
+<!--		<% if @page.content_for(:vk) %>
+			<% url = get_social_url(@page.content_for(:vk)) %>
+			<a href="https://www.vk.com/<%= url %>" target="_blank">
+			  	<%= image_tag("vkontakte.png",class:"big_icon") %><%= url %>
+			</a>
+			<br>
+		<% end %>
+
+		<% if @page.content_for(:facebook) %>		
+			<% url = get_social_url(@page.content_for(:facebook)) %>
+			<a href="https://www.facebook.com/<%= url %>" target="_blank">
+			  	<%= image_tag("facebook.png",class:"big_icon") %><%= url %>
+			</a>
+			<br>
+		<% end %>
+
+		<% if @page.content_for(:instagram) %>			
+			<% url = get_social_url(@page.content_for(:instagram)) %>
+			<a href="https://www.instagram.com/<%= url %>" target="_blank">
+			  	<%= image_tag("insta.png",class:"big_icon") %><%= url %>
+			</a>
+			<br>
+		<% end %>
+-->
+		<% if @page.content_for(:mobile_phone) %>	
+			<% phone = get_social_url(@page.content_for(:mobile_phone)) %>
+			<a href="tel:<%= phone.gsub(/[-()]/,'') %>">
+			<%= image_tag("call.png",class:"big_icon") %><%= phone %>
+			</a>
+		<% end %>
+	</h3>
+	</div>
+	<a href="#" title="Back to top"><%= image_tag("top-btn.png",id:"back-to-top") %></a>
+</body>
+  
+

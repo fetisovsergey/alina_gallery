@@ -1,0 +1,4 @@
+---
+name: i-should-buy-a-boat.jpg
+model_class: Refinery::Image
+model_attachment: image

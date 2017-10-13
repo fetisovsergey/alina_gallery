@@ -1,0 +1,6 @@
+<% if gallery.children.count != 0 %>
+	<% @parent = gallery %>
+	<%= render 'refinery/portfolio/galleries/gallery_partial', :gallery => gallery.children.first %>
+<% else %>
+  <%= render 'refinery/portfolio/galleries/gallery_partial_morgan', :gallery => gallery %>
+<% end %>

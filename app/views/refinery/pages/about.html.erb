@@ -1,0 +1,11 @@
+<% provide(:title, 'Фотограф') %>
+<!DOCTYPE html>
+<html>
+<body>
+	<% if @page.content_for(:avatar) %>
+		<%= image_tag(get_image_url(@page.content_for(:avatar)),class:"avatar") %>
+	<% end %>
+	<div class="description">
+		<%=raw @page.content_for(:body) %>
+	</div>
+</body>

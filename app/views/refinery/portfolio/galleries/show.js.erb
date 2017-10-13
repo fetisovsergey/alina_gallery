@@ -1,0 +1,7 @@
+$('#galleries').append("<%= escape_javascript(render 'galleries', :galleries => @galleries) %></div>");
+<% if @galleries.next_page %>
+	$('.pagination').replaceWith("<%= j will_paginate(@galleries) %>");
+<% else %>
+	$(window).off('scroll');
+    $('.pagination').remove();
+<% end %>

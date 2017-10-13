@@ -1,0 +1,102 @@
+<%- if items.present? -%>
+	<% parent_gallery = parent_gallery_items(items) %>
+	<style>
+		body
+		{
+			background:#fff !important
+		}
+		#gallery<%= parent_gallery.id %>{color:rgba(0,0,0,1)}
+		#back-to-top,#logo,#bs-example-navbar-collapse-1,.navbar-toggle,#logo2
+		{
+			display:none !important
+		}
+		<% if !mobile %>
+			.container-fluid
+			{
+				margin-top:50px
+			}
+			#exit_button
+			{
+			  	top:1px;
+			}
+		<% else %>
+			body
+			{
+				position:relative;
+				min-height:0;
+			}
+			html,body
+			{
+				overflow-x: hidden;
+			}
+			.bxslider_images
+			{
+				height:71vmin;
+			}
+			.container-fluid
+			{
+				position:fixed;
+				left:0;
+				right:0;
+				margin:0 auto;
+			}
+			@media screen and (orientation:portrait)
+			{
+			   .container-fluid
+				{
+					text-align:right;
+					top:12%;
+				}
+				footer
+				{
+					position:fixed;
+					bottom:0;
+				}
+				#exit_button
+				{
+					position:relative;
+					margin-bottom:10px;
+				}
+			}
+			@media screen and (orientation:landscape)
+			{
+				footer,.navbar
+				{
+					display:none !important
+				}
+				body
+				{
+					padding-bottom:0
+				}
+			   .container-fluid
+				{
+					margin-top:3px;
+				}
+				#exit_button
+				{
+					top:5px
+				}
+				#bx-pager
+				{
+					margin-top:5px;
+				}
+			}
+		<% end %>
+	</style>
+
+	<div class='slideshow' id='gallery_images'>
+		<%= link_to(image_tag("cross.png",id:"exit_button"),refinery.portfolio_gallery_path(parent_gallery)) %>
+	    <ul class="bxslider">
+	      <%= render items %>
+	    </ul>
+	   	<div id="bx-pager">
+			<% count = 0 %>
+		    <% items.each do |item| %>
+		   		<a data-slide-index="<%= count %>" href="">
+		    		<%= image_tag(item.image.thumbnail(geometry:"100x100#c").url,:class => "small_bxslider",:title => '',:alt => '') %>	        	
+	        	</a>
+	        	<% count = count + 1 %>
+	      	<% end %>
+		</div>
+	</div>	
+<%- end -%>

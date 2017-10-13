@@ -1,0 +1,23 @@
+<% if gallery.items.count != 0 %>
+<a href="<%= refinery.portfolio_gallery_path(@parent) %>" style="text-decoration:none">
+<div class="galleries">
+	<div class="photo-gallery-thumbnail">
+		<%= image_tag(first_item(gallery).thumbnail(geometry:"320x320#").url,class:"small_images",alt:"",title:"") %>
+		<% if !mobile %>
+			<%= image_tag(second_item(gallery).thumbnail(geometry:"320x320#").url,class:"small_images second",alt:"",title:"") %>
+			<div class="black"></div>
+		<% end %>
+	</div>
+	<div class="title">
+		<h3>
+		<% if @parent %>
+			<%= @parent.title %>	 
+		<% else %>
+			<%= gallery.title %>
+		<% end %>
+		</h3>
+	</div>
+</div>
+</a>
+<% end %>
+
